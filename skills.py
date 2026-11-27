@@ -1,4 +1,5 @@
 from main import bcolors
+import subprocess
 
 # Skills keywords
 kw_application = [
@@ -15,6 +16,13 @@ def actionChooser(intent):
       app = intent.replace(p.lower(), '').strip()
       print(f"Skill {bcolors.WARNING}Application{bcolors.ENDC} has been called.")
       print(f"App: {bcolors.WARNING}{app}{bcolors.ENDC}")
+      openApplication(app)
       break
 
 # SKILLS Behaviors
+def openApplication(app):
+  try:
+    subprocess.Popen([app])
+    print(f"{bcolors.TIP}{app} opened.{bcolors.ENDC}")
+  except FileNotFoundError:
+    print(f"{bcolors.WARNING}App not found.{bcolors.ENDC}")
