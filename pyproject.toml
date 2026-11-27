@@ -3,6 +3,5 @@ name = "kai"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
-    "openwakeword>=0.4.0",
-    "sounddevice>=0.5.6",
+    "keyboard>=0.13.5",
 ]
