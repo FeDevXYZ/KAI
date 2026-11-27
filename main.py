@@ -60,7 +60,7 @@ def actionChooser(intent):
   print(f"\n{bcolors.WARNING}You wrote '{intent}'{bcolors.ENDC}")
   for p in kw_application:
     if p.lower() in intent.lower().strip():
-      app = intent.replace(p, '')
+      app = intent.replace(p.lower(), '').strip()
       print(f"Skill {bcolors.WARNING}Application{bcolors.ENDC} has been called.")
       print(f"App: {bcolors.WARNING}{app}{bcolors.ENDC}")
       break
