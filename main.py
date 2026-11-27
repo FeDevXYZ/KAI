@@ -38,6 +38,7 @@ def called():
   print(bcolors.BOLD+bcolors.WARNING+pyfiglet.figlet_format("KAI", font="roman")+bcolors.ENDC)
   if name is None:
     print(bcolors.WARNING+"Good {morning/afternoon/evening}. This is our first time talking together. May I know your name?")
+    print(bcolors.TIP+"💡 Change this later in settings")
     time.sleep(0.5)
     name = str(input(bcolors.ENDC+"You can call me: "))
     time.sleep(0.8)
