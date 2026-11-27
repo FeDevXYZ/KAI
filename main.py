@@ -35,15 +35,23 @@ def bcolors_test():
 
 def called():
   global name
+  global prompt
+
   print(bcolors.BOLD+bcolors.WARNING+pyfiglet.figlet_format("KAI", font="roman")+bcolors.ENDC)
-  if name is None:
+
+  if name is None: # First meet
     print(bcolors.WARNING+"Good {morning/afternoon/evening}. This is our first time talking together. May I know your name?")
     print(bcolors.TIP+"💡 Change this later in settings")
     time.sleep(0.5)
     name = str(input(bcolors.ENDC+"You can call me: "))
     time.sleep(0.8)
-    print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today?")
+    print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today? \n"+bcolors.ENDC)
 
+  prompt = input("") # User sends here the intent
+  actionChooser(prompt)
+
+def actionChooser(prompt):
+  print(f"{bcolors.WARNING}You wrote '{prompt}'{bcolors.ENDC}")
 if __name__ == "__main__":
   keyboard.add_hotkey('windows+k', called)     # COMMENTED for testing purposes
   keyboard.add_hotkey('windows+c', bcolors_test)
