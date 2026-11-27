@@ -5,6 +5,7 @@
 import keyboard
 import pyfiglet
 import time
+import skills
 
 # VARIABLES AND CLASSES
 class bcolors:
@@ -18,10 +19,6 @@ class bcolors:
   BOLD = '\033[1m'
   UNDERLINE = '\033[4m'
   TIP = '\033[38;2;190;160;95m'
-
-kw_application = [
-  "Open", "Launch", "Start", "Run", "Execute", "Boot", "Fire", "Load", "Bring up"
-]
 
 prompt = None
 name = None
@@ -52,18 +49,7 @@ def called():
     print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today?"+bcolors.ENDC)
 
   prompt = input("") # User sends here the intent
-  actionChooser(prompt)
-
-def actionChooser(intent):
-  global kw_application
-
-  print(f"\n{bcolors.WARNING}You wrote '{intent}'{bcolors.ENDC}")
-  for p in kw_application:
-    if p.lower() in intent.lower().strip():
-      app = intent.replace(p.lower(), '').strip()
-      print(f"Skill {bcolors.WARNING}Application{bcolors.ENDC} has been called.")
-      print(f"App: {bcolors.WARNING}{app}{bcolors.ENDC}")
-      break
+  skills.actionChooser(prompt)
 
 if __name__ == "__main__":
   keyboard.add_hotkey('windows+k', called)     # COMMENTED for testing purposes
