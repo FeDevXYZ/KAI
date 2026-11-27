@@ -43,7 +43,6 @@ def called():
     print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today?")
 
 if __name__ == "__main__":
-  called()
-  bcolors_test()
-  #keyboard.add_hotkey('windows+k', called)     // COMMENTED for testing purposes
-  #keyboard.wait('esc')
+  keyboard.add_hotkey('windows+k', called)     # COMMENTED for testing purposes
+  keyboard.add_hotkey('windows+c', bcolors_test)
+  keyboard.wait('esc')
