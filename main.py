@@ -19,12 +19,23 @@ class bcolors:
   UNDERLINE = '\033[4m'
 
 callnumber = 0
+name = None
+
+def bcolors_test():
+  print(bcolors.HEADER+"HEADER")
+  print(bcolors.OKBLUE + "OKBLUE")
+  print(bcolors.OKCYAN + "OKCYAN")
+  print(bcolors.OKGREEN + "OKGREEN")
+  print(bcolors.WARNING + "WARNING")
+  print(bcolors.FAIL + "FAIL")
+  print(bcolors.ENDC)
+  print(bcolors.BOLD + "BOLD")
+  print(bcolors.UNDERLINE + "UNDERLINE")
 
 def called():
-  global callnumber, name
-  callnumber = callnumber + 1
+  global name
   print(bcolors.BOLD+bcolors.WARNING+pyfiglet.figlet_format("KAI", font="roman")+bcolors.ENDC)
-  if callnumber == 1:
+  if name is None:
     print(bcolors.WARNING+"Good {morning/afternoon/evening}. This is our first time talking together. May I know your name?")
     time.sleep(0.5)
     name = str(input(bcolors.ENDC+"You can call me: "))
@@ -33,5 +44,6 @@ def called():
 
 if __name__ == "__main__":
   called()
+  bcolors_test()
   #keyboard.add_hotkey('windows+k', called)     // COMMENTED for testing purposes
   #keyboard.wait('esc')
