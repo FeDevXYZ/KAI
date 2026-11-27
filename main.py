@@ -1,9 +1,12 @@
 # Hey KAI!
 # Voice assistant for PCs
 
+# IMPORTS
 import keyboard
 import pyfiglet
+import time
 
+# VARIABLES AND CLASSES
 class bcolors:
   HEADER = '\033[95m'
   OKBLUE = '\033[94m'
@@ -15,10 +18,18 @@ class bcolors:
   BOLD = '\033[1m'
   UNDERLINE = '\033[4m'
 
+callnumber = 0
 
 def called():
-  print(bcolors.BOLD+bcolors.WARNING+pyfiglet.figlet_format("KAI", font="roman"))
-  input("")
+  global callnumber, name
+  callnumber = callnumber + 1
+  print(bcolors.BOLD+bcolors.WARNING+pyfiglet.figlet_format("KAI", font="roman")+bcolors.ENDC)
+  if callnumber == 1:
+    print(bcolors.WARNING+"Good {morning/afternoon/evening}. This is our first time talking together. May I know your name?")
+    time.sleep(0.5)
+    name = str(input(bcolors.ENDC+"You can call me: "))
+    time.sleep(0.8)
+    print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today?")
 
 if __name__ == "__main__":
   called()
