@@ -19,7 +19,7 @@ class bcolors:
   UNDERLINE = '\033[4m'
   TIP = '\033[38;2;190;160;95m'
 
-callnumber = 0
+prompt = None
 name = None
 
 def bcolors_test():
@@ -52,6 +52,7 @@ def called():
 
 def actionChooser(prompt):
   print(f"{bcolors.WARNING}You wrote '{prompt}'{bcolors.ENDC}")
+
 if __name__ == "__main__":
   keyboard.add_hotkey('windows+k', called)     # COMMENTED for testing purposes
   keyboard.add_hotkey('windows+c', bcolors_test)
