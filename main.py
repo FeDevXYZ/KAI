@@ -6,6 +6,7 @@ import keyboard
 import pyfiglet
 import time
 import skills
+import os
 
 # VARIABLES AND CLASSES
 class bcolors:
@@ -22,6 +23,7 @@ class bcolors:
 
 prompt = None
 name = None
+user = os.getenv("SUDO_USER")
 
 def bcolors_test():
   print(bcolors.HEADER+"HEADER")

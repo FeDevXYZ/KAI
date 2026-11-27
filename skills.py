@@ -1,4 +1,4 @@
-from main import bcolors
+from main import bcolors, user
 import subprocess
 
 # Skills keywords
@@ -22,7 +22,7 @@ def actionChooser(intent):
 # SKILLS Behaviors
 def openApplication(app):
   try:
-    subprocess.Popen([app])
+    subprocess.Popen(["sudo", "-u", user, app], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     print(f"{bcolors.TIP}{app} opened.{bcolors.ENDC}")
   except FileNotFoundError:
     print(f"{bcolors.WARNING}App not found.{bcolors.ENDC}")
