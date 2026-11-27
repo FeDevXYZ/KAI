@@ -19,6 +19,10 @@ class bcolors:
   UNDERLINE = '\033[4m'
   TIP = '\033[38;2;190;160;95m'
 
+kw_application = [
+  "Open", "Launch", "Start", "Run", "Execute", "Boot", "Fire", "Load", "Bring up"
+]
+
 prompt = None
 name = None
 
@@ -45,13 +49,21 @@ def called():
     time.sleep(0.5)
     name = str(input(bcolors.ENDC+"You can call me: "))
     time.sleep(0.8)
-    print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today? \n"+bcolors.ENDC)
+    print(bcolors.WARNING+f"Hello {name}, nice to meet you. What would you like to do today?"+bcolors.ENDC)
 
   prompt = input("") # User sends here the intent
   actionChooser(prompt)
 
-def actionChooser(prompt):
-  print(f"{bcolors.WARNING}You wrote '{prompt}'{bcolors.ENDC}")
+def actionChooser(intent):
+  global kw_application
+
+  print(f"\n{bcolors.WARNING}You wrote '{intent}'{bcolors.ENDC}")
+  for p in kw_application:
+    if p.lower() in intent.lower().strip():
+      app = intent.replace(p, '')
+      print(f"Skill {bcolors.WARNING}Application{bcolors.ENDC} has been called.")
+      print(f"App: {bcolors.WARNING}{app}{bcolors.ENDC}")
+      break
 
 if __name__ == "__main__":
   keyboard.add_hotkey('windows+k', called)     # COMMENTED for testing purposes
