@@ -17,6 +17,7 @@ class bcolors:
   ENDC = '\033[0m'
   BOLD = '\033[1m'
   UNDERLINE = '\033[4m'
+  TIP = '\033[38;2;190;160;95m'
 
 callnumber = 0
 name = None
